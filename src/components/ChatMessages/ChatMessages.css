@@ -1,0 +1,15 @@
+.chatMessages .chats {
+  display: flex;
+  flex-direction: column;
+}
+.ui.compact.segment {
+  max-width: 250px;
+  width: 300px;
+}
+.ui.compact.segment.user-sent {
+  margin-left: auto;
+}
+.convo-label b {
+  margin: 0 5px;
+  font-size: 15px;
+}

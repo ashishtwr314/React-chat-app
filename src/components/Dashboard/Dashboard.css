@@ -1,0 +1,16 @@
+.dashboard-main {
+  display: flex;
+}
+.contact-list {
+  flex-basis: 20%;
+}
+.chatMessages {
+  flex-basis: 80%;
+  margin: 0 50px;
+}
+.chatMessages .chats {
+  height: 70vh;
+  margin-bottom: 20px;
+  overflow-y: scroll;
+  padding: 30px;
+}

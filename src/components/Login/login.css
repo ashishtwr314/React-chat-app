@@ -1,0 +1,16 @@
+.login-container {
+  width: 500px;
+  max-width: 500px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -70%);
+}
+
+.login-container .header {
+  margin-bottom: 30px;
+}
+.newLoginMessage {
+  width: 500px;
+  margin: 0 auto;
+}

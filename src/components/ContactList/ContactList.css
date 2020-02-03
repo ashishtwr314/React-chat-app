@@ -1,0 +1,14 @@
+.ui.avatar.image.contact-avatar {
+  width: auto;
+  height: 50px;
+}
+.contact-info {
+  margin: 5px;
+}
+.item.contact {
+  margin: 20px 0;
+  cursor: pointer;
+}
+.contact-info_message {
+  margin-top: 5px;
+}
