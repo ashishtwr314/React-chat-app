@@ -1,3 +1,11 @@
 .navbar.menu.small {
-  margin-bottom: 50px;
+  margin-bottom: 00px;
+}
+.mobile-only {
+  display: none !important;
+}
+@media only screen and (max-width: 768px) {
+  .mobile-only {
+    display: flex !important;
+  }
 }

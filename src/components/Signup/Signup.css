@@ -1,11 +1,16 @@
 .signup-container {
   width: 500px;
-  max-width: 500px;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -40%);
 }
 .signup-container .header {
   margin-bottom: 30px;
+}
+@media only screen and (max-width: 500px) {
+  .signup-container {
+    width: 100%;
+    padding: 20px;
+  }
 }

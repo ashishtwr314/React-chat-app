@@ -6,7 +6,7 @@ const ChatMessages = props => {
   if (props.chats[props.activeIndex]) {
     return (
       <React.Fragment>
-        <Segment inverted color="blue" className="convo-label">
+        <Segment fluid inverted color="blue" className="convo-label">
           Conversation with:
           <b>
             {props.chats[props.activeIndex].users.filter(

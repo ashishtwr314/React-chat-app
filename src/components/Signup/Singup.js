@@ -53,10 +53,13 @@ class Singup extends Component {
     });
     if (!this.passwordCnf()) {
       console.log("Passwords do not match");
+      return;
     } else if (!this.passwordLen()) {
       console.log("Password len should be morethan 6 chars");
+      return;
     } else if (!this.state.checked) {
       console.log("Please check the box above");
+      return;
     } else {
       firebase
         .auth()
@@ -84,16 +87,18 @@ class Singup extends Component {
               );
             })
             .catch(err => {
-              console.log("Failed toadd to database");
+              console.log("Failed to add to database");
             });
         })
         .catch(err => {
+          console.log(err);
           this.setState(
             {
               loader: false
             },
             () => {
               console.log(err);
+              return;
             }
           );
         });
@@ -110,8 +115,7 @@ class Singup extends Component {
       <React.Fragment>
         <Navbar />
         <div className="signup-container">
-          <h1 className="ui header">Signup</h1>
-          <Segment>
+          <Segment fluid>
             {this.state.loader ? loading : null}
 
             <Form onSubmit={this.SubmitHandler}>

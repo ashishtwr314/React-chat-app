@@ -1,16 +1,46 @@
 .dashboard-main {
-  display: flex;
+  position: relative;
 }
 .contact-list {
-  flex-basis: 20%;
+  position: fixed;
+  width: 250px;
+  padding: 20px 0 0 0;
+  height: 65vh;
+  overflow: hidden;
 }
 .chatMessages {
-  flex-basis: 80%;
-  margin: 0 50px;
+  margin-left: 250px;
+  width: 100%s;
 }
 .chatMessages .chats {
   height: 70vh;
   margin-bottom: 20px;
   overflow-y: scroll;
   padding: 30px;
+}
+.new-chat-btn {
+  display: inline-block;
+  position: fixed;
+  top: 75%;
+  left: 40px;
+  margin: 50px auto;
+}
+/* .ui.navbar.menu .item.mobile-only {
+  display: none;
+} */
+
+@media only screen and (max-width: 768px) {
+  /* .ui.navbar.menu .item.mobile-only {
+    display: flex;
+  } */
+  .contact-list {
+    width: 0px;
+    overflow: hidden;
+  }
+  .chatMessages {
+    margin: 0;
+  }
+  .ui.navbar.menu .item:not(.dont-hide) {
+    display: none;
+  }
 }

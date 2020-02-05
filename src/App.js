@@ -5,14 +5,15 @@ import { BrowserRouter } from "react-router-dom";
 import Login from "./components/Login/login";
 import Signup from "./components/Signup/Singup";
 import Dashboard from "./components/Dashboard/Dashboard";
+import Home from "./components/Home/Home";
 
 function App() {
   return (
     <BrowserRouter>
-      <Route path="/signup" excat component={Signup} />
-      <Route path="/login" excat component={Login} />
-      <Route path="/dashboard" excat component={Dashboard} />
-      <Route path="/" excat render={() => <h1>Hii</h1>} />
+      <Route path="/signup" exact component={Signup} />
+      <Route path="/login" exact component={Login} />
+      <Route path="/dashboard" exact component={Dashboard} />
+      <Route path="/" exact component={Home} />
     </BrowserRouter>
   );
 }

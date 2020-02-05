@@ -1,4 +1,4 @@
-.chatMessages .chats {
+.chatMessages .chats > div:not(.convo-label) {
   display: flex;
   flex-direction: column;
 }
@@ -12,4 +12,10 @@
 .convo-label b {
   margin: 0 5px;
   font-size: 15px;
+}
+
+.chatMessages {
+  position: relative;
+}
+.chatMessages .ui.segment.convo-label {
 }

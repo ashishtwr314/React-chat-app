@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { List, Image, Loader } from "semantic-ui-react";
+import { List, Image, Loader, Placeholder } from "semantic-ui-react";
 import "./ContactList.css";
 
 class ContactList extends Component {
@@ -22,7 +22,9 @@ class ContactList extends Component {
             return (
               <List.Item
                 active={this.props.activeIndex == index}
-                onClick={() => this.props.onContactSelect(index)}
+                onClick={() => {
+                  this.props.onContactSelect(index);
+                }}
                 className="contact"
                 key={index}
               >
@@ -47,7 +49,20 @@ class ContactList extends Component {
             );
           })
         ) : (
-          <Loader active inline="centered" />
+          <React.Fragment>
+            <Placeholder>
+              <Placeholder.Header image>
+                <Placeholder.Line />
+                <Placeholder.Line />
+              </Placeholder.Header>
+            </Placeholder>
+            <Placeholder>
+              <Placeholder.Header image>
+                <Placeholder.Line />
+                <Placeholder.Line />
+              </Placeholder.Header>
+            </Placeholder>
+          </React.Fragment>
         )}
       </List>
     );

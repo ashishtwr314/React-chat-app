@@ -1,0 +1,72 @@
+html {
+  scroll-behavior: smooth;
+}
+a {
+  color: inherit !important;
+}
+
+.hero-banner {
+  background-image: linear-gradient(to right, #6879e3, #7550a8);
+  padding: 5px 0; /*TO fix the overlapping*/
+}
+.hero-banner-content {
+  padding: 100px 0;
+}
+.sub-heading {
+  word-spacing: 5px;
+  line-height: 35px;
+  font-weight: 100 !important;
+}
+.hero-image {
+  height: 300px;
+}
+.ui.buttons.btns {
+  margin-top: 30px;
+}
+.item {
+  padding: 20px !important;
+}
+.item-image img {
+  height: 80px !important;
+  width: auto !important;
+}
+.tech-used {
+  padding: 50px 0;
+}
+.about-dev {
+  background-image: linear-gradient(to right, #8667b3, #4c61eb);
+  padding: 50px 0;
+}
+.contact-buttons button.ui.button {
+  margin: 10px 0px 15px 0;
+}
+
+.contact-buttons .basic.segment {
+  color: #fff;
+  font-weight: 600;
+}
+.segment.contact,
+.segment.address {
+  margin: 0;
+  color: #fff;
+}
+.contact a {
+  color: #fff;
+}
+.ui.header.or-text {
+  margin: 0;
+  display: inline-block;
+  border: 1px solid;
+  padding: 10px;
+  border-radius: 50%;
+  color: #fff;
+}
+
+@media only screen and (max-width: 768px) {
+  .tech-used .tech-card {
+    margin: 20px !important;
+  }
+  .map {
+    width: 100%;
+  }
+}

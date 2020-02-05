@@ -1,6 +1,11 @@
 .ui.input.messageInput input {
   border: 1px solid royalblue;
 }
+.ui.ui.input.messageInput {
+  width: 70% !important;
+  margin: 0 auto;
+}
+
 .send-icon {
   margin-right: 10px;
 }

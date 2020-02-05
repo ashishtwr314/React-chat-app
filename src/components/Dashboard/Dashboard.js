@@ -3,7 +3,7 @@ import ContactList from "../ContactList/ContactList";
 import Navbar from "../Navbar/Navbar";
 import ChatMessages from "../ChatMessages/ChatMessages";
 import "./Dashboard.css";
-import { Button, Icon } from "semantic-ui-react";
+import { Button, Icon, Header, Grid, Segment } from "semantic-ui-react";
 
 import firebase, { firestore } from "firebase";
 import TextFeild from "../TextFeild/TextFeild";
@@ -35,25 +35,55 @@ class Dashboard extends Component {
     });
   };
 
+  logout = () => {
+    firebase.auth().signOut();
+  };
+
+  toggleSidebar = () => {
+    const itemsToToggle = document.querySelectorAll(
+      ".navbar .item:not(.dont-hide)"
+    );
+    const contactList = document.getElementById("contact-list");
+    const chatMessages = document.getElementById("chatMessages");
+    const newChatButton = document.getElementsByClassName("new-chat-btn")[0];
+
+    if (contactList.style.width !== "0px") {
+      contactList.style.width = 0;
+      chatMessages.style.marginLeft = 0;
+      newChatButton.style.display = "none";
+      itemsToToggle.forEach(item => {
+        item.style.display = "none";
+      });
+    } else {
+      contactList.style.width = "250px";
+      chatMessages.style.marginLeft = "250px";
+      newChatButton.style.display = "inline-block";
+      itemsToToggle.forEach(item => {
+        item.style.display = "flex";
+      });
+    }
+  };
+
   render() {
     return (
       <React.Fragment>
-        <Navbar />
+        <Navbar
+          toggleSidebar={this.toggleSidebar}
+          email={this.state.email}
+          logout={this.logout}
+        />
         <div className="dashboard-main">
-          <div className="contact-list">
+          <div id="contact-list" className="contact-list">
             <ContactList
+              toggleSidebar={this.toggleSidebar}
               activeIndex={this.state.activeIndex}
               chats={this.state.chats}
               userEmail={this.state.email}
               onContactSelect={this.onContactSelect}
             />
-            <div className="new-chat-btn">
-              <Button onClick={this.newChat} primary icon>
-                <Icon name="add" />
-              </Button>
-            </div>
           </div>
-          <div className="chatMessages">
+
+          <div id="chatMessages" className="chatMessages">
             <div id="chats" className="chats">
               {this.state.showChats ? (
                 <ChatMessages
@@ -70,7 +100,20 @@ class Dashboard extends Component {
                   showNewChatForm={this.state.showNewChatForm}
                 />
               ) : (
-                <h1>Tap on a Contact to Start Chatting</h1>
+                <React.Fragment>
+                  <Header as="h1">
+                    Start a new Chat <br /> by clicking on the "New chat" Button
+                  </Header>
+                  <Segment basic className="mobile-only">
+                    <Header textAlign="center" color="black" as="h3">
+                      OR
+                    </Header>
+
+                    <Button toggle primary onClick={this.toggleSidebar}>
+                      Select From Existing Chats
+                    </Button>
+                  </Segment>
+                </React.Fragment>
               )}
             </div>
             <div className="messageInput">
@@ -86,6 +129,12 @@ class Dashboard extends Component {
                 </div>
               ) : null}
             </div>
+          </div>
+
+          <div className="new-chat-btn">
+            <Button circular size="huge" onClick={this.newChat} primary icon>
+              <Icon name="add" />
+            </Button>
           </div>
         </div>
       </React.Fragment>

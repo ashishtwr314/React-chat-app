@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Checkbox, Button } from "semantic-ui-react";
+import { Form, Checkbox, Button, Header, Segment } from "semantic-ui-react";
 import firebase from "firebase";
 
 class NewChatForm extends Component {
@@ -104,29 +104,31 @@ class NewChatForm extends Component {
 
   render() {
     return (
-      <Form onSubmit={e => this.onSubmitHandler(e)}>
-        <Form.Field>
-          <label>Email Id</label>
-          <input
-            value={this.state.receiverEmail}
-            onChange={e => this.onChangeHandler(e)}
-            name="receiverEmail"
-            placeholder="Email Id"
-          />
-        </Form.Field>
-        <Form.Field>
-          <label>Message</label>
-          <input
-            value={this.state.message}
-            onChange={e => this.onChangeHandler(e)}
-            name="message"
-            placeholder="Message"
-          />
-        </Form.Field>
-        <Button primary type="submit">
-          Submit
-        </Button>
-      </Form>
+      <React.Fragment>
+        <Form onSubmit={e => this.onSubmitHandler(e)}>
+          <Form.Field>
+            <label>Email Id</label>
+            <input
+              value={this.state.receiverEmail}
+              onChange={e => this.onChangeHandler(e)}
+              name="receiverEmail"
+              placeholder="Email Id"
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>Message</label>
+            <input
+              value={this.state.message}
+              onChange={e => this.onChangeHandler(e)}
+              name="message"
+              placeholder="Message"
+            />
+          </Form.Field>
+          <Button primary type="submit">
+            Submit
+          </Button>
+        </Form>
+      </React.Fragment>
     );
   }
 }
