@@ -23,6 +23,7 @@ class ContactList extends Component {
               <List.Item
                 active={this.props.activeIndex == index}
                 onClick={() => {
+                  this.props.toggleSidebar();
                   this.props.onContactSelect(index);
                 }}
                 className="contact"

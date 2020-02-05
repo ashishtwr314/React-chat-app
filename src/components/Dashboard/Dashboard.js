@@ -40,6 +40,10 @@ class Dashboard extends Component {
   };
 
   toggleSidebar = () => {
+    if (window.innerWidth > 768) {
+      return;
+    }
+
     const itemsToToggle = document.querySelectorAll(
       ".navbar .item:not(.dont-hide)"
     );
