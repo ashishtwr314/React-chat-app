@@ -7,7 +7,8 @@ import {
   Message,
   Segment,
   Dimmer,
-  Loader
+  Loader,
+  Header
 } from "semantic-ui-react";
 import "./login.css";
 import Navbar from "../Navbar/Navbar";
@@ -19,7 +20,8 @@ class Login extends Component {
     this.state = {
       email: "",
       password: "",
-      loader: false
+      loader: false,
+      error: ""
     };
   }
 
@@ -39,7 +41,10 @@ class Login extends Component {
         this.props.history.push("/dashboard");
       })
       .catch(err => {
-        console.log(err);
+        this.setState({
+          error: err.message,
+          loader: false
+        });
       });
   };
 
@@ -72,6 +77,9 @@ class Login extends Component {
 
         <div className="login-container">
           <h1 className="ui header">Login</h1>
+          <Header textAlign="center" as="h4" color="red">
+            {this.state.error}
+          </Header>
           <Segment>
             {this.state.loader ? loading : null}
 

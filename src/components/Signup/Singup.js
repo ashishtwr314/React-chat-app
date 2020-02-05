@@ -6,7 +6,8 @@ import {
   Form,
   Dimmer,
   Loader,
-  Segment
+  Segment,
+  Header
 } from "semantic-ui-react";
 import "./Signup.css";
 import Navbar from "../Navbar/Navbar";
@@ -22,7 +23,8 @@ class Singup extends Component {
       password: "",
       passwordCnf: "",
       checked: false,
-      loader: false
+      loader: false,
+      error: ""
     };
   }
   onChangeHandler = e => {
@@ -48,19 +50,26 @@ class Singup extends Component {
   };
 
   SubmitHandler = () => {
-    this.setState({
-      loader: true
-    });
     if (!this.passwordCnf()) {
-      console.log("Passwords do not match");
+      this.setState({ error: "Passwords do not match" });
       return;
     } else if (!this.passwordLen()) {
-      console.log("Password len should be morethan 6 chars");
+      this.setState({
+        error: "Password length should be more than 6 characters"
+      });
       return;
     } else if (!this.state.checked) {
-      console.log("Please check the box above");
+      this.setState({
+        error: "Please accept the Terms and Conditions"
+      });
       return;
     } else {
+      if (this.state.error !== "") {
+        return;
+      }
+      this.setState({
+        loader: true
+      });
       firebase
         .auth()
         .createUserWithEmailAndPassword(this.state.email, this.state.password)
@@ -115,6 +124,9 @@ class Singup extends Component {
       <React.Fragment>
         <Navbar />
         <div className="signup-container">
+          <Header textAlign="center" as="h4" color="red">
+            {this.state.error}
+          </Header>
           <Segment fluid>
             {this.state.loader ? loading : null}
 
