@@ -4,6 +4,6 @@ A React based chatting application built with Semantic UI React and has live rel
 <img src="https://github.com/ashishtwr314/React-chat-app/blob/master/Chat%20App.png" alt="Banner">
 
 
-Live Preview: https://ashichatapp.netlify.com
+Live Preview: https://ashchatapp.netlify.com
 
 <b>Technologies Used: </b>  HTML5, CSS3, Semantic UI React, React.JS, JSX, Firebase, Firestore.
