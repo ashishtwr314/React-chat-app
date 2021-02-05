@@ -8,7 +8,7 @@ import {
   Segment,
   Dimmer,
   Loader,
-  Header
+  Header,
 } from "semantic-ui-react";
 import "./login.css";
 import Navbar from "../Navbar/Navbar";
@@ -21,29 +21,47 @@ class Login extends Component {
       email: "",
       password: "",
       loader: false,
-      error: ""
+      error: "",
     };
   }
 
-  onChangeHandler = e => {
+  onChangeHandler = (e) => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
   SubmitHandler = () => {
     this.setState({
-      loader: true
+      loader: true,
     });
     firebase
       .auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)
-      .then(result => {
+      .then((result) => {
         this.props.history.push("/dashboard");
       })
-      .catch(err => {
+      .catch((err) => {
         this.setState({
           error: err.message,
-          loader: false
+          loader: false,
+        });
+      });
+  };
+
+  handleDemoLogin = () => {
+    this.setState({
+      loader: true,
+    });
+    firebase
+      .auth()
+      .signInWithEmailAndPassword("user1@gmail.com", "password")
+      .then((result) => {
+        this.props.history.push("/dashboard");
+      })
+      .catch((err) => {
+        this.setState({
+          error: err.message,
+          loader: false,
         });
       });
   };
@@ -89,7 +107,7 @@ class Login extends Component {
                 <input
                   required
                   name="email"
-                  onChange={e => this.onChangeHandler(e)}
+                  onChange={(e) => this.onChangeHandler(e)}
                   placeholder="Email id"
                 />
               </Form.Field>
@@ -99,7 +117,7 @@ class Login extends Component {
                   type="password"
                   required
                   name="password"
-                  onChange={e => this.onChangeHandler(e)}
+                  onChange={(e) => this.onChangeHandler(e)}
                   placeholder="Password"
                 />
               </Form.Field>
@@ -108,6 +126,12 @@ class Login extends Component {
               </Form.Field>
               <Button type="submit">Login</Button>
             </Form>
+            <Button
+              className="demo-login"
+              onClick={() => this.handleDemoLogin()}
+            >
+              Demo Login
+            </Button>
           </Segment>
         </div>
       </React.Fragment>
